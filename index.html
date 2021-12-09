@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style>
+      img {
+        margin-top: 50px;
+      }
+      .cardimg {
+        display: flex;
+        justify-content: space-around;
+      }
+      .code{
+        width: 100%;
+      }
+      /* #alpha {
+        margin-left: 40%;
+        position: static;
+        margin-top: 2%;
+      }
+      #beta {
+        margin-left: 40%;
+        position: static;
+        margin-top: 2%;
+      }
+      #desple {
+        display: block;
+        position: absolute;
+        style-list: none;
+      } */
+    </style>
+    <title>Diapositivas</title>
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light navbar fixed-top navbar-light bg-light"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Ichiraku</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Indice
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" href="#Presentacion"
+                  >Descripción del problema</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#Presentacion"
+                  >Diagrama de clases</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#img1">Diagrama MER</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#diagramaMER"
+                  >Modelo Relacional</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#contacto">DDL</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#tabla">DML</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#datos">Inserción</a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1r38it-3e0KqqeCuQGVXEaovTgY7V4d8_NtyHzlUE-Qc/edit#gid=1514410752"
+                  target="_blank"
+                  >Normalización</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <br /><br />
+    <div class="container" id="Presentacion">
+      <img src="imagenes/presenta.png" class="img-fluid" alt="Presentacion" />
+    </div>
+
+    
+    <br />
+    <br />
+    <div class="container" id="Presentacion">
+        <img src="imagenes/Problem.png" class="img-fluid" alt="Presentacion" />
+      </div>
+                 
+    <br />
+    <br />
+
+    <div class="container" id="Presentacion">
+        <img src="imagenes/DIAGRAMACLASES.png" class="img-fluid" alt="Presentacion" />
+      </div>
+    <br>
+    <br>
+    <div class="container" id="img1">
+      <img src="imagenes/aka.png" class="img-fluid" alt="..." />
+    </div>
+    <div class="container-md" id="img2">
+      <img src="imagenes/ilustra2.png" class="img-fluid" alt="..." />
+    </div>
+    <div class="container-md" id="img3">
+      <img src="imagenes/ilustra3.png" class="img-fluid" alt="..." />
+    </div>
+    <div class="container" id="diagramaMER">
+      <img src="imagenes/MER.png" class="img-fluid" alt="..." />
+    </div>
+    <!--DDML-->
+    <div class="container">
+      <strong>Crear una base de datos</strong>
+      <strong>CREATE DATABASE "nombre"</strong>
+      <figure class="figure">
+        <img
+          src="imagenes/DDML/tables.png"
+          class="figure-img img-fluid rounded"
+          alt="..."
+          id="contacto"
+        />
+        <figcaption class="figure-caption">
+          Creación he inseción de datos de la tabla "contacto"
+        </figcaption>
+      </figure>
+      <figure class="figure">
+        <img
+          src="imagenes/DDML/contacto.png"
+          class="figure-img img-fluid rounded"
+          alt="..."
+          id="tabla"
+        />
+        <figcaption class="figure-caption">Creación de tablas</figcaption>
+      </figure>
+      <div id="datos">
+        <strong>Inserción de datos ichiraku</strong>
+        <strong>Inserción</strong>
+        <p>
+          mysqli_query(conectUser(), "INSERT INTO rol_usuario (idrol_usuario,
+          rol) VALUES (".$this->getNumdocument().", '".$this->getRol()."');");
+        </p>
+        <p>
+          mysqli_query(conectUser(), "INSERT INTO contacto (idcontacto,
+          telefono, telcelular, correo) VALUES (".$this->getNumdocument().",
+          ".$this->getNumeroTelefonico().", ".$this->getNumeroCelular().",
+          '".$this->getEmail()."');");
+        </p>
+        <p>
+          mysqli_query(conectUser(), "INSERT INTO usuario_contraseña
+          (tip_documento, num_documento, contraseñacol) VALUES (1,
+          ".$this->getNumdocument().", '".$this->getContraseña()."');");
+        </p>
+        <p>
+          mysqli_query(conectUser(), "INSERT INTO usuario
+          (tipo_documento,num_documento,usuariocol,p_nombre,s_nombre,p_apellido,s_apellido,rol_usuario_idrol_usuario,contacto_idcontacto,usuario_contraseña_tip_documento,usuario_contraseña_num_documento)
+          VALUES ( 1, ".$this->getNumdocument().", '".$this->getEmail()."',
+          '".$this->getPnombre()."', '".$this->getSnombre()."',
+          '".$this->getPapellido()."', '".$this->getSapellido()."',
+          ".$this->getNumdocument().", ".$this->getNumdocument().", 1,
+          ".$this->getNumdocument().");");
+        </p>
+        <br />
+        <strong>Inserción</strong>
+        <p>
+          SELECT usuariocol, contraseñacol, rol FROM usuario U INNER JOIN
+          usuario_contraseña C ON U.usuariocol = '".$this->getNombreUsuario()."'
+          AND C.contraseñacol = '".$this->getContrasena()."' INNER JOIN
+          rol_usuario R ON R.idrol_usuario = U.rol_usuario_idrol_usuario
+        </p>
+      </div>
+
+      <br>
+
+      <strong>Código sql</strong>
+
+      <textarea class="code" name="" id="" cols="30" rows="10" width="100px">
+          
+          --
+          -- Base de datos: `mydb`
+          --
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `contacto`
+          --
+          
+          CREATE TABLE `contacto` (
+            `idcontacto` int(11) NOT NULL,
+            `telefono` int(10) DEFAULT NULL,
+            `telcelular` int(10) NOT NULL,
+            `correo` varchar(35) NOT NULL
+          );
+          
+          --
+          -- Volcado de datos para la tabla `contacto`
+          --
+          
+          INSERT INTO `contacto` (`idcontacto`, `telefono`, `telcelular`, `correo`) VALUES
+          (1, 6346484, 2147483647, 'jhostriana11@misena.edu.co'),
+          (2, 5222343, 2147483647, 'diegoazaz98@gmail.com'),
+          (45554, 47867897, 2147483647, 'andresguerrero@gmail.com'),
+          (283859, 5456456, 2147483647, 'stivenjhojan011@gmail.com'),
+          (32584862, 34872465, 4546542, 'ramos29@gmail.com'),
+          (52220445, 2147483647, 2147483647, 'andresguerrero@gmail.com'),
+          (245646545, 456456213, 3216545, 'instructorMiguel@misena.edu.co'),
+          (1022322859, 5454521, 2147483647, 'stivenjhojan011@gmail.com'),
+          (2147483647, 48648465, 456456465, 'ramos29@gmail.com');
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `especificacion`
+          --
+          
+          CREATE TABLE `especificacion` (
+            `idcomentario` int(11) NOT NULL,
+            `comentariocol` varchar(145) DEFAULT NULL,
+            `reserva_idreserva` int(11) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `estado`
+          --
+          
+          CREATE TABLE `estado` (
+            `idestado` int(11) NOT NULL,
+            `estado` tinyint(4) NOT NULL
+          );
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `info_reserva`
+          --
+          
+          CREATE TABLE `info_reserva` (
+            `idinfo` int(11) NOT NULL,
+            `hora` time NOT NULL,
+            `fecha` date NOT NULL
+          );
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `menu`
+          --
+          
+          CREATE TABLE `menu` (
+            `idmenu` int(11) NOT NULL,
+            `menucol` varchar(45) DEFAULT NULL
+          );
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `menu_has_reserva`
+          --
+          
+          CREATE TABLE `menu_has_reserva` (
+            `menu_idmenu` int(11) NOT NULL,
+            `reserva_idreserva` int(11) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `reserva`
+          --
+          
+          CREATE TABLE `reserva` (
+            `idreserva` int(11) NOT NULL,
+            `cantpersonas` int(2) NOT NULL,
+            `usuario_idusuario` int(11) NOT NULL,
+            `usuario_cliente_idusuario_cliente` int(11) NOT NULL,
+            `usuario_idusuario1` int(11) NOT NULL,
+            `info_reserva_idinfo` int(11) NOT NULL,
+            `estado_idestado` int(11) NOT NULL,
+            `usuario_tipo_documento` int(5) NOT NULL,
+            `usuario_num_documento` int(15) NOT NULL,
+            `usuario_usuario_contraseña_tip_documento` int(11) NOT NULL,
+            `usuario_usuario_contraseña_num_documento` int(11) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `rol_usuario`
+          --
+          
+          CREATE TABLE `rol_usuario` (
+            `idrol_usuario` int(11) NOT NULL,
+            `rol` varchar(15) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          --
+          -- Volcado de datos para la tabla `rol_usuario`
+          --
+          
+          INSERT INTO `rol_usuario` (`idrol_usuario`, `rol`) VALUES
+          (1, 'ADMINISTRADOR'),
+          (2, 'MAID'),
+          (45554, 'ADMINISTRADOR'),
+          (283859, 'ADMINISTRADOR'),
+          (32584862, 'ADMINISTRADOR'),
+          (52220445, 'RECEPCIONISTA'),
+          (245646545, 'ADMINISTRADOR'),
+          (1022322859, 'ADMINISTRADOR'),
+          (2147483647, 'ADMINISTRADOR');
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `servicio`
+          --
+          
+          CREATE TABLE `servicio` (
+            `idpaquete` int(11) NOT NULL,
+            `tipo_servicio` varchar(20) DEFAULT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `servicio_has_reserva`
+          --
+          
+          CREATE TABLE `servicio_has_reserva` (
+            `servicio_idpaquete` int(11) NOT NULL,
+            `reserva_idreserva` int(11) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `usuario`
+          --
+          
+          CREATE TABLE `usuario` (
+            `tipo_documento` int(5) NOT NULL,
+            `num_documento` int(15) NOT NULL,
+            `usuariocol` varchar(45) NOT NULL,
+            `p_nombre` varchar(10) NOT NULL,
+            `s_nombre` varchar(10) DEFAULT NULL,
+            `p_apellido` varchar(10) NOT NULL,
+            `s_apellido` varchar(10) DEFAULT NULL,
+            `rol_usuario_idrol_usuario` int(11) NOT NULL,
+            `contacto_idcontacto` int(11) NOT NULL,
+            `usuario_contraseña_tip_documento` int(11) NOT NULL,
+            `usuario_contraseña_num_documento` int(11) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          --
+          -- Volcado de datos para la tabla `usuario`
+          --
+          
+          INSERT INTO `usuario` (`tipo_documento`, `num_documento`, `usuariocol`, `p_nombre`, `s_nombre`, `p_apellido`, `s_apellido`, `rol_usuario_idrol_usuario`, `contacto_idcontacto`, `usuario_contraseña_tip_documento`, `usuario_contraseña_num_documento`) VALUES
+          (1, 2147483647, 'ramos29@gmail.com', 'ANDRÉS', 'Felipe', 'RAMOS', 'RICAURTE', 2147483647, 2147483647, 1, 2147483647);
+          
+          -- --------------------------------------------------------
+          
+          --
+          -- Estructura de tabla para la tabla `usuario_contraseña`
+          --
+          
+          CREATE TABLE `usuario_contraseña` (
+            `tip_documento` int(11) NOT NULL,
+            `num_documento` int(11) NOT NULL,
+            `contraseñacol` varchar(35) NOT NULL
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+          
+          --
+          -- Volcado de datos para la tabla `usuario_contraseña`
+          --
+          
+          INSERT INTO `usuario_contraseña` (`tip_documento`, `num_documento`, `contraseñacol`) VALUES
+          (1, 45554, 'e781d5bcde2b40620967de0e6d2eece4'),
+          (1, 283859, '17f512b253c55f5b55450056af683f1b'),
+          (1, 32584862, '9ae058cce9300219609774a246ae5667'),
+          (1, 52220445, 'a4432a0711997b79d561c6330cfa4c77'),
+          (1, 245646545, '940bae10ca539c9d097187f5d5cc554f'),
+          (1, 1022322859, 'jhojan123'),
+          (1, 1032676693, 'diego123'),
+          (1, 2147483647, 'a18c05279215e7c8fd5f822877ef96cf');
+          
+          --
+          -- Índices para tablas volcadas
+          --
+          
+          --
+          -- Indices de la tabla `contacto`
+          --
+          ALTER TABLE `contacto`
+            ADD PRIMARY KEY (`idcontacto`);
+          
+          --
+          -- Indices de la tabla `especificacion`
+          --
+          ALTER TABLE `especificacion`
+            ADD PRIMARY KEY (`idcomentario`),
+            ADD KEY `fk_especificacion_reserva1_idx` (`reserva_idreserva`);
+          
+          --
+          -- Indices de la tabla `estado`
+          --
+          ALTER TABLE `estado`
+            ADD PRIMARY KEY (`idestado`);
+          
+          --
+          -- Indices de la tabla `info_reserva`
+          --
+          ALTER TABLE `info_reserva`
+            ADD PRIMARY KEY (`idinfo`);
+          
+          --
+          -- Indices de la tabla `menu`
+          --
+          ALTER TABLE `menu`
+            ADD PRIMARY KEY (`idmenu`);
+          
+          --
+          -- Indices de la tabla `menu_has_reserva`
+          --
+          ALTER TABLE `menu_has_reserva`
+            ADD PRIMARY KEY (`menu_idmenu`,`reserva_idreserva`),
+            ADD KEY `fk_menu_has_reserva_reserva1_idx` (`reserva_idreserva`),
+            ADD KEY `fk_menu_has_reserva_menu1_idx` (`menu_idmenu`);
+          
+          --
+          -- Indices de la tabla `reserva`
+          --
+          ALTER TABLE `reserva`
+            ADD PRIMARY KEY (`idreserva`),
+            ADD KEY `fk_reserva_info_reserva1_idx` (`info_reserva_idinfo`),
+            ADD KEY `fk_reserva_estado1_idx` (`estado_idestado`),
+            ADD KEY `fk_reserva_usuario1_idx` (`usuario_tipo_documento`,`usuario_num_documento`,`usuario_usuario_contraseña_tip_documento`,`usuario_usuario_contraseña_num_documento`);
+          
+          --
+          -- Indices de la tabla `rol_usuario`
+          --
+          ALTER TABLE `rol_usuario`
+            ADD PRIMARY KEY (`idrol_usuario`);
+          
+          --
+          -- Indices de la tabla `servicio`
+          --
+          ALTER TABLE `servicio`
+            ADD PRIMARY KEY (`idpaquete`);
+          
+          --
+          -- Indices de la tabla `servicio_has_reserva`
+          --
+          ALTER TABLE `servicio_has_reserva`
+            ADD PRIMARY KEY (`servicio_idpaquete`,`reserva_idreserva`),
+            ADD KEY `fk_servicio_has_reserva_reserva1_idx` (`reserva_idreserva`),
+            ADD KEY `fk_servicio_has_reserva_servicio1_idx` (`servicio_idpaquete`);
+          
+          --
+          -- Indices de la tabla `usuario`
+          --
+          ALTER TABLE `usuario`
+            ADD PRIMARY KEY (`tipo_documento`,`num_documento`,`usuario_contraseña_tip_documento`,`usuario_contraseña_num_documento`),
+            ADD KEY `fk_usuario_rol_usuario1_idx` (`rol_usuario_idrol_usuario`),
+            ADD KEY `fk_usuario_contacto1_idx` (`contacto_idcontacto`),
+            ADD KEY `fk_usuario_usuario_contraseña1_idx` (`usuario_contraseña_tip_documento`,`usuario_contraseña_num_documento`);
+          
+          --
+          -- Indices de la tabla `usuario_contraseña`
+          --
+          ALTER TABLE `usuario_contraseña`
+            ADD PRIMARY KEY (`tip_documento`,`num_documento`);
+          
+          --
+          -- Restricciones para tablas volcadas
+          --
+          
+          --
+          -- Filtros para la tabla `especificacion`
+          --
+          ALTER TABLE `especificacion`
+            ADD CONSTRAINT `fk_especificacion_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+          
+          --
+          -- Filtros para la tabla `menu_has_reserva`
+          --
+          ALTER TABLE `menu_has_reserva`
+            ADD CONSTRAINT `fk_menu_has_reserva_menu1` FOREIGN KEY (`menu_idmenu`) REFERENCES `menu` (`idmenu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+            ADD CONSTRAINT `fk_menu_has_reserva_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+          
+          --
+          -- Filtros para la tabla `reserva`
+          --
+          ALTER TABLE `reserva`
+            ADD CONSTRAINT `fk_reserva_estado1` FOREIGN KEY (`estado_idestado`) REFERENCES `estado` (`idestado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+            ADD CONSTRAINT `fk_reserva_info_reserva1` FOREIGN KEY (`info_reserva_idinfo`) REFERENCES `info_reserva` (`idinfo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+            ADD CONSTRAINT `fk_reserva_usuario1` FOREIGN KEY (`usuario_tipo_documento`,`usuario_num_documento`,`usuario_usuario_contraseña_tip_documento`,`usuario_usuario_contraseña_num_documento`) REFERENCES `usuario` (`tipo_documento`, `num_documento`, `usuario_contraseña_tip_documento`, `usuario_contraseña_num_documento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+          
+          --
+          -- Filtros para la tabla `servicio_has_reserva`
+          --
+          ALTER TABLE `servicio_has_reserva`
+            ADD CONSTRAINT `fk_servicio_has_reserva_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+            ADD CONSTRAINT `fk_servicio_has_reserva_servicio1` FOREIGN KEY (`servicio_idpaquete`) REFERENCES `servicio` (`idpaquete`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+          
+          --
+          -- Filtros para la tabla `usuario`
+          --
+          ALTER TABLE `usuario`
+            ADD CONSTRAINT `fk_usuario_contacto1` FOREIGN KEY (`contacto_idcontacto`) REFERENCES `contacto` (`idcontacto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+            ADD CONSTRAINT `fk_usuario_rol_usuario1` FOREIGN KEY (`rol_usuario_idrol_usuario`) REFERENCES `rol_usuario` (`idrol_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+            ADD CONSTRAINT `fk_usuario_usuario_contraseña1` FOREIGN KEY (`usuario_contraseña_tip_documento`,`usuario_contraseña_num_documento`) REFERENCES `usuario_contraseña` (`tip_documento`, `num_documento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+          COMMIT;
+          
+          /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+          /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+          /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+          
+      </textarea>
+    </div>
+
+    <!-- CARUSEL-DDML -->
+
+    <br />
+    <br />
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
