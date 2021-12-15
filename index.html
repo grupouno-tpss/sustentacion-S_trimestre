@@ -574,6 +574,366 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
           
       </textarea>
+      <h3>DML</h3>
+      <textarea class="code" name="" id="" cols="30" rows="10" width="100px">
+        --INSERTAR DATOS EN LA TABLA "contraseña"
+INSERT INTO
+    contraseña(idcontraseña, contraseñacol)
+VALUES
+    (52220446, "delfina");
+
+--INSERTAR DATOS EN LA TABLA "contacto"
+INSERT INTO
+    contacto (idcontacto, telefono, telcelular, correo)
+VALUES
+    (
+        52220446,
+        6348474,
+        3208936651,
+        "delfina@gmail.com"
+    );
+
+--INSERTAR DATOS EN LA TABLA "usuario"
+INSERT INTO
+    usuario (
+        tipo_documento,
+        numDocumento,
+        p_nombre,
+        s_nombre,
+        p_apellido,
+        s_apellido,
+        contraseña_idcontraseña,
+        rol_usuario_idrol_usuario,
+        contacto_idcontacto
+    )
+VALUES
+    (
+        "CC",
+        52220446,
+        "DELFINA",
+        "GUALDRON",
+        "QUIROGA",
+        "PELAEZ",
+        52220446,
+        1,
+        52220446
+    );
+
+--SELECCIONAR TABLA USUARIO
+SELECT
+    *
+FROM
+    usuario;
+
+--SELECCIONAR TODOS LOS USUARIOS CON ROL DE ADMINISTRADOR
+SELECT
+    tipo_documento,
+    numDocumento,
+    p_nombre,
+    s_nombre,
+    p_apellido,
+    s_apellido,
+    rol
+FROM
+    usuario U
+    INNER JOIN rol_usuario R ON R.rol = "ADMINISTRADOR";
+
+--CONSULTAS DE RESERVAS
+--Consulta usuario
+SELECT
+    tipo_documento,
+    numDocumento
+FROM
+    usuario U
+    INNER JOIN contacto C ON U.p_nombre = 'Andres'
+    AND C.idcontacto = U.numDocumento;
+
+--Llama datos de las reservaciones con un id especifico
+SELECT
+    idreserva,
+    cantpersonas,
+    hora,
+    fecha,
+    comentariocol,
+    idcomentario,
+    estado,
+    tipo_documento,
+    numDocumento,
+    correo,
+    telefono,
+    telcelular,
+    p_nombre
+FROM
+    reserva R
+    INNER JOIN info_reserva I ON R.info_reserva_idinfo = I.idinfo
+    AND I.idinfo = 2
+    INNER JOIN especificacion E ON E.idcomentario = R.especificacion_idcomentario
+    INNER JOIN estado ES ON ES.idestado = R.estado_idestado
+    INNER JOIN usuario U ON R.usuario_numDocumento = U.numDocumento
+    AND R.usuario_numDocumento = U.numDocumento
+    INNER JOIN contacto C ON C.idcontacto = U.contacto_idcontacto;
+
+--Llama a los datos con un documento respectivo 
+SELECT
+    idreserva,
+    cantpersonas,
+    hora,
+    fecha,
+    comentariocol,
+    idcomentario,
+    estado,
+    tipo_documento,
+    numDocumento,
+    correo,
+    telefono,
+    telcelular,
+    p_nombre
+FROM
+    reserva R
+    INNER JOIN info_reserva I ON R.info_reserva_idinfo = I.idinfo
+    INNER JOIN especificacion E ON E.idcomentario = R.especificacion_idcomentario
+    INNER JOIN estado ES ON ES.idestado = R.estado_idestado
+    INNER JOIN usuario U ON R.usuario_numDocumento = U.numDocumento
+    AND U.numDocumento = 961793612
+    INNER JOIN contacto C ON C.idcontacto = U.contacto_idcontacto;
+
+--Busqueda por idreserva
+SELECT
+    idreserva,
+    cantpersonas,
+    hora,
+    fecha,
+    comentariocol,
+    idcomentario,
+    estado,
+    tipo_documento,
+    numDocumento,
+    correo,
+    telefono,
+    telcelular,
+    p_nombre
+FROM
+    reserva R
+    INNER JOIN info_reserva I ON R.info_reserva_idinfo = I.idinfo
+    INNER JOIN especificacion E ON E.idcomentario = R.especificacion_idcomentario
+    INNER JOIN estado ES ON ES.idestado = R.estado_idestado
+    INNER JOIN usuario U ON R.usuario_numDocumento = U.numDocumento
+    AND R.idreserva = 1073626838
+    INNER JOIN contacto C ON C.idcontacto = U.contacto_idcontacto;
+
+--CONSULTAS DE USUARIOS
+--Busqueda de datos por usuario 
+SELECT
+    tipo_documento,
+    numDocumento,
+    p_nombre,
+    s_nombre,
+    p_apellido,
+    s_apellido,
+    rol,
+    correo,
+    telefono,
+    telcelular
+FROM
+    usuario U
+    INNER JOIN rol_usuario R ON U.rol_usuario_idrol_usuario = R.idrol_usuario
+    INNER JOIN contacto C ON U.numDocumento = C.idcontacto
+WHERE
+    p_nombre LIKE 'Lana%';
+
+--Tarjeta de identidad
+SELECT
+    tipo_documento,
+    numDocumento,
+    p_nombre,
+    s_nombre,
+    p_apellido,
+    s_apellido,
+    idrol_usuario,
+    rol,
+    correo,
+    telefono,
+    telcelular
+FROM
+    usuario U
+    INNER JOIN rol_usuario R ON U.rol_usuario_idrol_usuario = R.idrol_usuario
+    INNER JOIN contacto C ON U.numDocumento = C.idcontacto
+WHERE
+    tipo_documento = 'TI';
+
+--Info usuarios por cargo
+SELECT
+    tipo_documento,
+    numDocumento,
+    p_nombre,
+    s_nombre,
+    p_apellido,
+    s_apellido,
+    idrol_usuario,
+    rol,
+    correo,
+    telefono,
+    telcelular
+FROM
+    usuario U
+    INNER JOIN rol_usuario R ON U.rol_usuario_idrol_usuario = R.idrol_usuario
+    INNER JOIN contacto C ON U.numDocumento = C.idcontacto
+WHERE
+    rol = 'RECEPCIONISTA';
+
+--Info usuarios por cierto correo electrónico
+SELECT
+    tipo_documento,
+    numDocumento,
+    p_nombre,
+    s_nombre,
+    p_apellido,
+    s_apellido,
+    idrol_usuario,
+    rol,
+    correo,
+    telefono,
+    telcelular
+FROM
+    usuario U
+    INNER JOIN rol_usuario R ON U.rol_usuario_idrol_usuario = R.idrol_usuario
+    INNER JOIN contacto C ON U.numDocumento = C.idcontacto
+WHERE
+    correo = 'DIEGO342@GMAIL.COM';
+
+--Delete
+DELETE FROM
+    reserva
+WHERE
+    usuario_tipo_documento = 'CC'
+    AND usuario_numDocumento = 52220445;
+
+DELETE FROM
+    usuario
+WHERE
+    numDocumento = 52220445;
+
+DELETE FROM
+    contacto
+WHERE
+    idcontacto = 52220445;
+
+DELETE FROM
+    contraseña
+WHERE
+    idcontraseña = 52220445;
+
+--Insert
+INSERT INTO
+    contraseña(idcontraseña, contraseñacol)
+VALUES
+    (52220445, 'delfina');
+
+INSERT INTO
+    contacto (idcontacto, telefono, telcelular, correo)
+VALUES
+    (
+        52220445,
+        3456889,
+        3145679876,
+        'delfina@gmail.com'
+    );
+
+INSERT INTO
+    usuario (
+        tipo_documento,
+        numDocumento,
+        p_nombre,
+        s_nombre,
+        p_apellido,
+        s_apellido,
+        contraseña_idcontraseña,
+        rol_usuario_idrol_usuario,
+        contacto_idcontacto
+    )
+VALUES
+    (
+        'CC',
+        52220445,
+        'Delfina',
+        'Maria',
+        'Baron',
+        'Montenegro',
+        52220445,
+        1,
+        52220445
+    );
+
+INSERT INTO
+    rol_usuario (idrol_usuario, rol)
+VALUES
+    (1, "ADMINISTRADOR");
+
+INSERT INTO
+    rol_usuario (idrol_usuario, rol)
+VALUES
+    (2, "MAID");
+
+INSERT INTO
+    rol_usuario (idrol_usuario, rol)
+VALUES
+    (3, "CLIENTE");
+
+-- fecha y hora
+INSERT INTO
+    info_reserva (idinfo, hora, fecha)
+VALUES
+    (1, "3:00", "2021/12/19");
+
+--Menu
+INSERT INTO
+    menu (idmenu, menucol)
+VALUES
+    (1, "Menu 1");
+
+INSERT INTO
+    menu (idmenu, menucol)
+VALUES
+    (2, "Menu 2");
+
+INSERT INTO
+    menu (idmenu, menucol)
+VALUES
+    (3, "Menu 3");
+
+--ESTADO
+INSERT INTO
+    estado (idestado, estado)
+VALUES
+    (1, "ACTIVO");
+
+INSERT INTO
+    estado (idestado, estado)
+VALUES
+    (2, "ARCHIVADO");
+
+--MODIFICAR
+UPDATE
+    reserva
+SET
+    cantpersonas = 2
+WHERE
+    idreserva = 52220445;
+
+UPDATE
+    reserva
+SET
+    info_reserva_idinfo = '2021-12-19'
+WHERE
+    idreserva = 52220445;
+
+UPDATE
+    especificacion
+SET
+    comentariocol = 'Ramen'
+WHERE
+    idcomentario = 52220445;
+      </textarea>
     </div>
     <div class="container-md gracias" id="img3">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCDwUrVGrD9I4X_qEtqi22QwHC6fB4PfmKEehFVHn3M1KuXpHIziema-RfbWD6XovZpgs&usqp=CAU" class="img-fluid" alt="..." />
