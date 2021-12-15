@@ -212,347 +212,366 @@
 
       <textarea class="code" name="" id="" cols="30" rows="10" width="100px">
           
-          --
-          -- Base de datos: `mydb`
-          --
-          
           -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `contacto`
-          --
-          
-          CREATE TABLE `contacto` (
-            `idcontacto` int(11) NOT NULL,
-            `telefono` int(10) DEFAULT NULL,
-            `telcelular` int(10) NOT NULL,
-            `correo` varchar(35) NOT NULL
-          );
-          
-          --
-          -- Volcado de datos para la tabla `contacto`
-          --
-          
-          INSERT INTO `contacto` (`idcontacto`, `telefono`, `telcelular`, `correo`) VALUES
-          (1, 6346484, 2147483647, 'jhostriana11@misena.edu.co'),
-          (2, 5222343, 2147483647, 'diegoazaz98@gmail.com'),
-          (45554, 47867897, 2147483647, 'andresguerrero@gmail.com'),
-          (283859, 5456456, 2147483647, 'stivenjhojan011@gmail.com'),
-          (32584862, 34872465, 4546542, 'ramos29@gmail.com'),
-          (52220445, 2147483647, 2147483647, 'andresguerrero@gmail.com'),
-          (245646545, 456456213, 3216545, 'instructorMiguel@misena.edu.co'),
-          (1022322859, 5454521, 2147483647, 'stivenjhojan011@gmail.com'),
-          (2147483647, 48648465, 456456465, 'ramos29@gmail.com');
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `especificacion`
-          --
-          
-          CREATE TABLE `especificacion` (
-            `idcomentario` int(11) NOT NULL,
-            `comentariocol` varchar(145) DEFAULT NULL,
-            `reserva_idreserva` int(11) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `estado`
-          --
-          
-          CREATE TABLE `estado` (
-            `idestado` int(11) NOT NULL,
-            `estado` tinyint(4) NOT NULL
-          );
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `info_reserva`
-          --
-          
-          CREATE TABLE `info_reserva` (
-            `idinfo` int(11) NOT NULL,
-            `hora` time NOT NULL,
-            `fecha` date NOT NULL
-          );
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `menu`
-          --
-          
-          CREATE TABLE `menu` (
-            `idmenu` int(11) NOT NULL,
-            `menucol` varchar(45) DEFAULT NULL
-          );
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `menu_has_reserva`
-          --
-          
-          CREATE TABLE `menu_has_reserva` (
-            `menu_idmenu` int(11) NOT NULL,
-            `reserva_idreserva` int(11) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `reserva`
-          --
-          
-          CREATE TABLE `reserva` (
-            `idreserva` int(11) NOT NULL,
-            `cantpersonas` int(2) NOT NULL,
-            `usuario_idusuario` int(11) NOT NULL,
-            `usuario_cliente_idusuario_cliente` int(11) NOT NULL,
-            `usuario_idusuario1` int(11) NOT NULL,
-            `info_reserva_idinfo` int(11) NOT NULL,
-            `estado_idestado` int(11) NOT NULL,
-            `usuario_tipo_documento` int(5) NOT NULL,
-            `usuario_num_documento` int(15) NOT NULL,
-            `usuario_usuario_contraseña_tip_documento` int(11) NOT NULL,
-            `usuario_usuario_contraseña_num_documento` int(11) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `rol_usuario`
-          --
-          
-          CREATE TABLE `rol_usuario` (
-            `idrol_usuario` int(11) NOT NULL,
-            `rol` varchar(15) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          --
-          -- Volcado de datos para la tabla `rol_usuario`
-          --
-          
-          INSERT INTO `rol_usuario` (`idrol_usuario`, `rol`) VALUES
-          (1, 'ADMINISTRADOR'),
-          (2, 'MAID'),
-          (45554, 'ADMINISTRADOR'),
-          (283859, 'ADMINISTRADOR'),
-          (32584862, 'ADMINISTRADOR'),
-          (52220445, 'RECEPCIONISTA'),
-          (245646545, 'ADMINISTRADOR'),
-          (1022322859, 'ADMINISTRADOR'),
-          (2147483647, 'ADMINISTRADOR');
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `servicio`
-          --
-          
-          CREATE TABLE `servicio` (
-            `idpaquete` int(11) NOT NULL,
-            `tipo_servicio` varchar(20) DEFAULT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `servicio_has_reserva`
-          --
-          
-          CREATE TABLE `servicio_has_reserva` (
-            `servicio_idpaquete` int(11) NOT NULL,
-            `reserva_idreserva` int(11) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `usuario`
-          --
-          
-          CREATE TABLE `usuario` (
-            `tipo_documento` int(5) NOT NULL,
-            `num_documento` int(15) NOT NULL,
-            `usuariocol` varchar(45) NOT NULL,
-            `p_nombre` varchar(10) NOT NULL,
-            `s_nombre` varchar(10) DEFAULT NULL,
-            `p_apellido` varchar(10) NOT NULL,
-            `s_apellido` varchar(10) DEFAULT NULL,
-            `rol_usuario_idrol_usuario` int(11) NOT NULL,
-            `contacto_idcontacto` int(11) NOT NULL,
-            `usuario_contraseña_tip_documento` int(11) NOT NULL,
-            `usuario_contraseña_num_documento` int(11) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          --
-          -- Volcado de datos para la tabla `usuario`
-          --
-          
-          INSERT INTO `usuario` (`tipo_documento`, `num_documento`, `usuariocol`, `p_nombre`, `s_nombre`, `p_apellido`, `s_apellido`, `rol_usuario_idrol_usuario`, `contacto_idcontacto`, `usuario_contraseña_tip_documento`, `usuario_contraseña_num_documento`) VALUES
-          (1, 2147483647, 'ramos29@gmail.com', 'ANDRÉS', 'Felipe', 'RAMOS', 'RICAURTE', 2147483647, 2147483647, 1, 2147483647);
-          
-          -- --------------------------------------------------------
-          
-          --
-          -- Estructura de tabla para la tabla `usuario_contraseña`
-          --
-          
-          CREATE TABLE `usuario_contraseña` (
-            `tip_documento` int(11) NOT NULL,
-            `num_documento` int(11) NOT NULL,
-            `contraseñacol` varchar(35) NOT NULL
-          ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-          
-          --
-          -- Volcado de datos para la tabla `usuario_contraseña`
-          --
-          
-          INSERT INTO `usuario_contraseña` (`tip_documento`, `num_documento`, `contraseñacol`) VALUES
-          (1, 45554, 'e781d5bcde2b40620967de0e6d2eece4'),
-          (1, 283859, '17f512b253c55f5b55450056af683f1b'),
-          (1, 32584862, '9ae058cce9300219609774a246ae5667'),
-          (1, 52220445, 'a4432a0711997b79d561c6330cfa4c77'),
-          (1, 245646545, '940bae10ca539c9d097187f5d5cc554f'),
-          (1, 1022322859, 'jhojan123'),
-          (1, 1032676693, 'diego123'),
-          (1, 2147483647, 'a18c05279215e7c8fd5f822877ef96cf');
-          
-          --
-          -- Índices para tablas volcadas
-          --
-          
-          --
-          -- Indices de la tabla `contacto`
-          --
-          ALTER TABLE `contacto`
-            ADD PRIMARY KEY (`idcontacto`);
-          
-          --
-          -- Indices de la tabla `especificacion`
-          --
-          ALTER TABLE `especificacion`
-            ADD PRIMARY KEY (`idcomentario`),
-            ADD KEY `fk_especificacion_reserva1_idx` (`reserva_idreserva`);
-          
-          --
-          -- Indices de la tabla `estado`
-          --
-          ALTER TABLE `estado`
-            ADD PRIMARY KEY (`idestado`);
-          
-          --
-          -- Indices de la tabla `info_reserva`
-          --
-          ALTER TABLE `info_reserva`
-            ADD PRIMARY KEY (`idinfo`);
-          
-          --
-          -- Indices de la tabla `menu`
-          --
-          ALTER TABLE `menu`
-            ADD PRIMARY KEY (`idmenu`);
-          
-          --
-          -- Indices de la tabla `menu_has_reserva`
-          --
-          ALTER TABLE `menu_has_reserva`
-            ADD PRIMARY KEY (`menu_idmenu`,`reserva_idreserva`),
-            ADD KEY `fk_menu_has_reserva_reserva1_idx` (`reserva_idreserva`),
-            ADD KEY `fk_menu_has_reserva_menu1_idx` (`menu_idmenu`);
-          
-          --
-          -- Indices de la tabla `reserva`
-          --
-          ALTER TABLE `reserva`
-            ADD PRIMARY KEY (`idreserva`),
-            ADD KEY `fk_reserva_info_reserva1_idx` (`info_reserva_idinfo`),
-            ADD KEY `fk_reserva_estado1_idx` (`estado_idestado`),
-            ADD KEY `fk_reserva_usuario1_idx` (`usuario_tipo_documento`,`usuario_num_documento`,`usuario_usuario_contraseña_tip_documento`,`usuario_usuario_contraseña_num_documento`);
-          
-          --
-          -- Indices de la tabla `rol_usuario`
-          --
-          ALTER TABLE `rol_usuario`
-            ADD PRIMARY KEY (`idrol_usuario`);
-          
-          --
-          -- Indices de la tabla `servicio`
-          --
-          ALTER TABLE `servicio`
-            ADD PRIMARY KEY (`idpaquete`);
-          
-          --
-          -- Indices de la tabla `servicio_has_reserva`
-          --
-          ALTER TABLE `servicio_has_reserva`
-            ADD PRIMARY KEY (`servicio_idpaquete`,`reserva_idreserva`),
-            ADD KEY `fk_servicio_has_reserva_reserva1_idx` (`reserva_idreserva`),
-            ADD KEY `fk_servicio_has_reserva_servicio1_idx` (`servicio_idpaquete`);
-          
-          --
-          -- Indices de la tabla `usuario`
-          --
-          ALTER TABLE `usuario`
-            ADD PRIMARY KEY (`tipo_documento`,`num_documento`,`usuario_contraseña_tip_documento`,`usuario_contraseña_num_documento`),
-            ADD KEY `fk_usuario_rol_usuario1_idx` (`rol_usuario_idrol_usuario`),
-            ADD KEY `fk_usuario_contacto1_idx` (`contacto_idcontacto`),
-            ADD KEY `fk_usuario_usuario_contraseña1_idx` (`usuario_contraseña_tip_documento`,`usuario_contraseña_num_documento`);
-          
-          --
-          -- Indices de la tabla `usuario_contraseña`
-          --
-          ALTER TABLE `usuario_contraseña`
-            ADD PRIMARY KEY (`tip_documento`,`num_documento`);
-          
-          --
-          -- Restricciones para tablas volcadas
-          --
-          
-          --
-          -- Filtros para la tabla `especificacion`
-          --
-          ALTER TABLE `especificacion`
-            ADD CONSTRAINT `fk_especificacion_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-          
-          --
-          -- Filtros para la tabla `menu_has_reserva`
-          --
-          ALTER TABLE `menu_has_reserva`
-            ADD CONSTRAINT `fk_menu_has_reserva_menu1` FOREIGN KEY (`menu_idmenu`) REFERENCES `menu` (`idmenu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-            ADD CONSTRAINT `fk_menu_has_reserva_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-          
-          --
-          -- Filtros para la tabla `reserva`
-          --
-          ALTER TABLE `reserva`
-            ADD CONSTRAINT `fk_reserva_estado1` FOREIGN KEY (`estado_idestado`) REFERENCES `estado` (`idestado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-            ADD CONSTRAINT `fk_reserva_info_reserva1` FOREIGN KEY (`info_reserva_idinfo`) REFERENCES `info_reserva` (`idinfo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-            ADD CONSTRAINT `fk_reserva_usuario1` FOREIGN KEY (`usuario_tipo_documento`,`usuario_num_documento`,`usuario_usuario_contraseña_tip_documento`,`usuario_usuario_contraseña_num_documento`) REFERENCES `usuario` (`tipo_documento`, `num_documento`, `usuario_contraseña_tip_documento`, `usuario_contraseña_num_documento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-          
-          --
-          -- Filtros para la tabla `servicio_has_reserva`
-          --
-          ALTER TABLE `servicio_has_reserva`
-            ADD CONSTRAINT `fk_servicio_has_reserva_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-            ADD CONSTRAINT `fk_servicio_has_reserva_servicio1` FOREIGN KEY (`servicio_idpaquete`) REFERENCES `servicio` (`idpaquete`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-          
-          --
-          -- Filtros para la tabla `usuario`
-          --
-          ALTER TABLE `usuario`
-            ADD CONSTRAINT `fk_usuario_contacto1` FOREIGN KEY (`contacto_idcontacto`) REFERENCES `contacto` (`idcontacto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-            ADD CONSTRAINT `fk_usuario_rol_usuario1` FOREIGN KEY (`rol_usuario_idrol_usuario`) REFERENCES `rol_usuario` (`idrol_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-            ADD CONSTRAINT `fk_usuario_usuario_contraseña1` FOREIGN KEY (`usuario_contraseña_tip_documento`,`usuario_contraseña_num_documento`) REFERENCES `usuario_contraseña` (`tip_documento`, `num_documento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-          COMMIT;
-          
-          /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-          /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-          /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Estructura de tabla para la tabla `contacto`
+--
+
+CREATE TABLE `contacto` (
+  `idcontacto` int(11) NOT NULL,
+  `telefono` int(10) DEFAULT NULL,
+  `telcelular` int(10) NOT NULL,
+  `correo` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `contacto`
+--
+
+INSERT INTO `contacto` (`idcontacto`, `telefono`, `telcelular`, `correo`) VALUES
+(52220445, 2147483647, 2147483647, 'delfina@misena.edu.co'),
+(655879844, 4556545, 54654, 'DIEGO342@GMAIL.COM'),
+(1022322858, 546545, 5474554, 'jhostriana11@misena.edu.co'),
+(2147483647, 7840424, 2147483647, 'CARLOS@GMAIL.COM');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contraseña`
+--
+
+CREATE TABLE `contraseña` (
+  `contraseñacol` varchar(35) NOT NULL,
+  `idcontraseña` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `contraseña`
+--
+
+INSERT INTO `contraseña` (`contraseñacol`, `idcontraseña`) VALUES
+('carlos', '10000524684'),
+('jhojan', '1022322858'),
+('delfina', '52220445'),
+('diego', '655879844');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `especificacion`
+--
+
+CREATE TABLE `especificacion` (
+  `idcomentario` int(11) NOT NULL,
+  `comentariocol` varchar(145) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `especificacion`
+--
+
+INSERT INTO `especificacion` (`idcomentario`, `comentariocol`) VALUES
+(87456347, 'Hola :)'),
+(525002092, 'Quisiera que me asignaran una mesa grande debido a que voy con niños'),
+(1294473884, 'Nada jsjs'),
+(1478407569, 'dfsasdfasd'),
+(1783714236, 'Nada jsjs'),
+(1994363006, 'Especificación por llamada.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado`
+--
+
+CREATE TABLE `estado` (
+  `idestado` int(11) NOT NULL,
+  `estado` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`idestado`, `estado`) VALUES
+(1, 'ACTIVO'),
+(2, 'ARCHIVADO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `info_reserva`
+--
+
+CREATE TABLE `info_reserva` (
+  `idinfo` int(11) NOT NULL,
+  `hora` time NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `info_reserva`
+--
+
+INSERT INTO `info_reserva` (`idinfo`, `hora`, `fecha`) VALUES
+(1, '03:00:00', '2021-12-19'),
+(2, '04:00:00', '2021-12-19');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menu`
+--
+
+CREATE TABLE `menu` (
+  `idmenu` int(11) NOT NULL,
+  `menucol` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `menu`
+--
+
+INSERT INTO `menu` (`idmenu`, `menucol`) VALUES
+(1, 'Menu 1'),
+(2, 'Menu 2'),
+(3, 'Menu 3');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reserva`
+--
+
+CREATE TABLE `reserva` (
+  `idreserva` int(11) NOT NULL,
+  `cantpersonas` int(2) NOT NULL,
+  `info_reserva_idinfo` int(11) NOT NULL,
+  `especificacion_idcomentario` int(11) NOT NULL,
+  `estado_idestado` int(11) NOT NULL,
+  `usuario_tipo_documento` varchar(10) NOT NULL,
+  `usuario_numDocumento` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`idreserva`, `cantpersonas`, `info_reserva_idinfo`, `especificacion_idcomentario`, `estado_idestado`, `usuario_tipo_documento`, `usuario_numDocumento`) VALUES
+(87456347, 7, 1, 87456347, 1, 'CC', 52220445),
+(525002092, 2, 1, 525002092, 1, 'TI', 1022322858),
+(1294473884, 3, 1, 1294473884, 1, 'TI', 1022322858),
+(1783714236, 3, 2, 1783714236, 1, 'CC', 52220445),
+(1994363006, 3, 1, 1994363006, 1, 'TI', 1022322858);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reserva_has_menu`
+--
+
+CREATE TABLE `reserva_has_menu` (
+  `reserva_idreserva` int(11) NOT NULL,
+  `menu_idmenu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reserva_has_paquete`
+--
+
+CREATE TABLE `reserva_has_paquete` (
+  `reserva_idreserva` int(11) NOT NULL,
+  `paquete_idpaquete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rol_usuario`
+--
+
+CREATE TABLE `rol_usuario` (
+  `idrol_usuario` int(11) NOT NULL,
+  `rol` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rol_usuario`
+--
+
+INSERT INTO `rol_usuario` (`idrol_usuario`, `rol`) VALUES
+(1, 'ADMINISTRADOR'),
+(2, 'MAID'),
+(3, 'CLIENTE');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicio`
+--
+
+CREATE TABLE `servicio` (
+  `idpaquete` int(11) NOT NULL,
+  `tipo_servicio` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `tipo_documento` varchar(10) NOT NULL,
+  `numDocumento` int(20) NOT NULL,
+  `p_nombre` varchar(10) NOT NULL,
+  `s_nombre` varchar(10) DEFAULT NULL,
+  `p_apellido` varchar(10) NOT NULL,
+  `s_apellido` varchar(10) DEFAULT NULL,
+  `rol_usuario_idrol_usuario` int(11) NOT NULL,
+  `contraseña_idcontraseña` varchar(20) NOT NULL,
+  `contacto_idcontacto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`tipo_documento`, `numDocumento`, `p_nombre`, `s_nombre`, `p_apellido`, `s_apellido`, `rol_usuario_idrol_usuario`, `contraseña_idcontraseña`, `contacto_idcontacto`) VALUES
+('CC', 52220445, 'DELFINA', 'GUALDRON', 'QUIROGA', 'PELAEZ', 3, '52220445', 52220445),
+('CC', 2147483647, 'CARLOS', 'ALBERTO', 'PELAEZ', 'OSORIO', 3, '10000524684', 2147483647),
+('TI', 655879844, 'DIEGO', 'ANDRÉS', 'CASALLAS', 'SUAREZ', 1, '655879844', 655879844),
+('TI', 1022322858, 'JHOJANN', ' ESTIVEN', 'TRIANA', 'QUIROGA', 1, '1022322858', 1022322858);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `contacto`
+--
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`idcontacto`);
+
+--
+-- Indices de la tabla `contraseña`
+--
+ALTER TABLE `contraseña`
+  ADD PRIMARY KEY (`idcontraseña`);
+
+--
+-- Indices de la tabla `especificacion`
+--
+ALTER TABLE `especificacion`
+  ADD PRIMARY KEY (`idcomentario`);
+
+--
+-- Indices de la tabla `estado`
+--
+ALTER TABLE `estado`
+  ADD PRIMARY KEY (`idestado`);
+
+--
+-- Indices de la tabla `info_reserva`
+--
+ALTER TABLE `info_reserva`
+  ADD PRIMARY KEY (`idinfo`);
+
+--
+-- Indices de la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`idmenu`);
+
+--
+-- Indices de la tabla `reserva`
+--
+ALTER TABLE `reserva`
+  ADD PRIMARY KEY (`idreserva`),
+  ADD KEY `fk_reserva_info_reserva1_idx` (`info_reserva_idinfo`),
+  ADD KEY `fk_reserva_especificacion1_idx` (`especificacion_idcomentario`),
+  ADD KEY `fk_reserva_estado1_idx` (`estado_idestado`),
+  ADD KEY `fk_reserva_usuario1_idx` (`usuario_tipo_documento`,`usuario_numDocumento`);
+
+--
+-- Indices de la tabla `reserva_has_menu`
+--
+ALTER TABLE `reserva_has_menu`
+  ADD PRIMARY KEY (`reserva_idreserva`,`menu_idmenu`),
+  ADD KEY `fk_reserva_has_menu_menu1_idx` (`menu_idmenu`),
+  ADD KEY `fk_reserva_has_menu_reserva1_idx` (`reserva_idreserva`);
+
+--
+-- Indices de la tabla `reserva_has_paquete`
+--
+ALTER TABLE `reserva_has_paquete`
+  ADD PRIMARY KEY (`reserva_idreserva`,`paquete_idpaquete`),
+  ADD KEY `fk_reserva_has_paquete_paquete1_idx` (`paquete_idpaquete`),
+  ADD KEY `fk_reserva_has_paquete_reserva1_idx` (`reserva_idreserva`);
+
+--
+-- Indices de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  ADD PRIMARY KEY (`idrol_usuario`);
+
+--
+-- Indices de la tabla `servicio`
+--
+ALTER TABLE `servicio`
+  ADD PRIMARY KEY (`idpaquete`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`tipo_documento`,`numDocumento`),
+  ADD KEY `fk_usuario_rol_usuario1_idx` (`rol_usuario_idrol_usuario`),
+  ADD KEY `fk_usuario_contraseña1_idx` (`contraseña_idcontraseña`),
+  ADD KEY `fk_usuario_contacto1_idx` (`contacto_idcontacto`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `reserva`
+--
+ALTER TABLE `reserva`
+  ADD CONSTRAINT `fk_reserva_especificacion1` FOREIGN KEY (`especificacion_idcomentario`) REFERENCES `especificacion` (`idcomentario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserva_estado1` FOREIGN KEY (`estado_idestado`) REFERENCES `estado` (`idestado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserva_info_reserva1` FOREIGN KEY (`info_reserva_idinfo`) REFERENCES `info_reserva` (`idinfo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserva_usuario1` FOREIGN KEY (`usuario_tipo_documento`,`usuario_numDocumento`) REFERENCES `usuario` (`tipo_documento`, `numDocumento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `reserva_has_menu`
+--
+ALTER TABLE `reserva_has_menu`
+  ADD CONSTRAINT `fk_reserva_has_menu_menu1` FOREIGN KEY (`menu_idmenu`) REFERENCES `menu` (`idmenu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserva_has_menu_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `reserva_has_paquete`
+--
+ALTER TABLE `reserva_has_paquete`
+  ADD CONSTRAINT `fk_reserva_has_paquete_paquete1` FOREIGN KEY (`paquete_idpaquete`) REFERENCES `servicio` (`idpaquete`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserva_has_paquete_reserva1` FOREIGN KEY (`reserva_idreserva`) REFERENCES `reserva` (`idreserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `fk_usuario_contacto1` FOREIGN KEY (`contacto_idcontacto`) REFERENCES `contacto` (`idcontacto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_usuario_contraseña1` FOREIGN KEY (`contraseña_idcontraseña`) REFERENCES `contraseña` (`idcontraseña`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_usuario_rol_usuario1` FOREIGN KEY (`rol_usuario_idrol_usuario`) REFERENCES `rol_usuario` (`idrol_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
           
       </textarea>
     </div>
